@@ -1,0 +1,24 @@
+2023-04-28	10:35:31	e213b56b-7227-4f33-a432-36c0303007f4	GET	undefined	Not allowed by cors
+2023-04-28	10:35:59	41ada46a-03d9-468a-8611-0ad85d33c322	OPTIONS	https://www.google.com	Not allowed by cors
+2023-04-28	10:35:59	25591d5d-6c92-4433-b964-96dd9d74f46a	GET	https://www.google.com	Not allowed by cors
+2023-04-29	00:41:24	ec4042f4-9a5a-4c6d-a89a-6d3356399578	POST	undefined	Cannot read properties of undefined (reading 'id')
+2023-04-29	00:43:07	2229b464-686d-4e6b-95d1-f04ca89a9907	POST	undefined	Cannot read properties of undefined (reading 'id')
+2023-04-29	00:43:46	0b7f1783-647f-406f-8b6c-3f389e41e032	POST	undefined	arr is not defined
+2023-04-29	00:44:03	224210ee-f62a-4bda-87bc-22cfebf8db48	POST	undefined	Reduce of empty array with no initial value
+2023-04-29	00:58:18	6b172b00-9b2e-4a4d-9468-26f4ee28031b	DELETE	undefined	Cannot destructure property 'id' of 'res.body' as it is undefined.
+2023-04-29	00:58:50	26affd4d-019a-4205-bbd7-ad744cf2556a	DELETE	undefined	Assignment to constant variable.
+2023-04-29	01:00:16	ca1024e5-2be8-4348-9a18-337cb5cdb8e7	DELETE	undefined	Unexpected token } in JSON at position 16
+2023-04-29	01:00:20	02d6e351-df72-49fc-805d-73a560ae040f	DELETE	undefined	Please Provide ID to delete
+2023-04-29	01:02:06	9104c82b-1ae4-4ca3-a422-14fcecd1014a	DELETE	undefined	No employee under this id
+2023-04-29	01:02:29	fe57668c-ca66-4104-96a0-f9db2d8645a8	DELETE	undefined	No employee under this id 4
+2023-04-29	01:03:48	fd58becf-d392-4ad0-8705-a9b687acece2	PUT	undefined	please provide this { id, firstname, lastname }
+2023-04-29	01:04:11	c2bbabae-29d3-4046-b4e1-e306f6095cb8	POST	undefined	please provide this { firstname, lastname }
+2023-04-29	01:05:05	152e6319-b8b3-4a4f-a24a-a63abdf6048f	POST	undefined	[object Object]
+2023-04-29	01:05:34	8ab7e5fe-615e-42e9-8724-ef6ad7b18c16	POST	undefined	please provide this { firstname, lastname }
+2023-04-29	01:20:08	b121a8c4-7869-4604-bf79-b1816cc5b3a3	GET	undefined	No employee found under this 5
+2023-04-29	01:40:37	4c55554b-3140-4a11-8c61-ad185940f7e9	GET	undefined	No employee found under this 5
+2023-04-29	01:40:54	bf5b8233-378b-4b03-a929-7c5a1f196452	DELETE	undefined	No employee under this id 4
+2023-04-29	01:42:47	f231f0ca-e17d-4cc4-9dda-d90aab5a4950	OPTIONS	https://stackoverflow.com	Not allowed by cors
+2023-04-29	01:42:47	4626d6e8-6776-4ea4-ac0e-2597a02ca28e	GET	https://stackoverflow.com	Not allowed by cors
+2023-04-29	02:00:28	2c46c007-03e7-4c3d-9a0c-4e6caacb2c98	POST	undefined	id is not defined
+2023-04-29	02:01:52	7365b273-ccc0-46a1-8c29-45a5f60f507a	GET	undefined	No employee found under this 4
