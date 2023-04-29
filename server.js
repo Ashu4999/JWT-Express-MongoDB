@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+require('dotenv').config();
 const PORT = process.env.PORT || 5000;
 const path = require('path');
 const { logger } = require('./middleware/logEvents');
@@ -27,6 +28,8 @@ app.use('/', require("./routes/root"));
 app.use('/subdir', require("./routes/subdir"));
 app.use('/route-chain', require("./routes/routeChain"));
 app.use('/employees', require("./routes/employees"));
+app.use('/register', require("./routes/register"));
+app.use('/auth', require("./routes/auth"));
 
 app.all('*', (req, res) => {
     res.status(404);

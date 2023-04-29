@@ -22,3 +22,6 @@
 2023-04-29	01:42:47	4626d6e8-6776-4ea4-ac0e-2597a02ca28e	GET	https://stackoverflow.com	Not allowed by cors
 2023-04-29	02:00:28	2c46c007-03e7-4c3d-9a0c-4e6caacb2c98	POST	undefined	id is not defined
 2023-04-29	02:01:52	7365b273-ccc0-46a1-8c29-45a5f60f507a	GET	undefined	No employee found under this 4
+2023-04-29	10:17:19	b8ce7869-5b34-4c9a-9c6b-6d3d8ffd7c8d	GET	undefined	No employee found under this 4
+2023-04-29	10:17:29	a03447cf-81dd-48be-a587-f105126f8c63	POST	undefined	please provide this { firstname, lastname }
+2023-04-29	10:17:57	b1d33b5f-cc8c-4309-9858-efa6f0061110	POST	undefined	please provide this { firstname, lastname }
