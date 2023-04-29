@@ -25,3 +25,23 @@
 2023-04-29	10:17:19	b8ce7869-5b34-4c9a-9c6b-6d3d8ffd7c8d	GET	undefined	No employee found under this 4
 2023-04-29	10:17:29	a03447cf-81dd-48be-a587-f105126f8c63	POST	undefined	please provide this { firstname, lastname }
 2023-04-29	10:17:57	b1d33b5f-cc8c-4309-9858-efa6f0061110	POST	undefined	please provide this { firstname, lastname }
+2023-04-29	17:31:43	070c97f5-f729-4d2d-ad44-ac19f34c17ec	GET	undefined	res.sendStutus is not a function
+2023-04-29	17:38:45	c231684e-f80b-4d40-8152-07fad1564665	GET	undefined	Cannot read properties of undefined (reading 'authorization')
+2023-04-29	17:42:08	4abe11ea-9f75-4973-83f9-53a9677ae902	GET	undefined	Cannot set headers after they are sent to the client
+2023-04-29	17:44:21	df31844a-90a8-4a97-95e3-5a2f478ad6f5	GET	undefined	username is not defined
+2023-04-29	17:45:53	01368bda-1b72-4638-a12a-687f7cc179af	GET	undefined	username is not defined
+2023-04-29	17:46:10	14d15a79-1c61-4fdc-963a-c393e089d91c	GET	undefined	username is not defined
+2023-04-29	17:46:35	eebd9b7e-0ca9-4b43-ba8a-411b22846584	GET	undefined	Cannot read properties of undefined (reading 'username')
+2023-04-29	17:46:36	5afde436-c4d6-4627-879e-616bca87f153	GET	undefined	Cannot read properties of undefined (reading 'username')
+2023-04-29	18:19:52	6b3ac75e-ae0b-4719-a12c-89a66305449f	GET	undefined	Cannot read properties of undefined (reading 'username')
+2023-04-29	18:20:27	e64f7a35-1c2c-4bf0-b2d2-01a4438cfd8a	GET	undefined	Cannot read properties of undefined (reading 'username')
+2023-04-29	18:21:02	d12b94a9-484e-459c-8f56-7ebefe14aeec	GET	undefined	Cannot read properties of undefined (reading 'username')
+2023-04-29	18:21:26	3ddf209c-8c8a-4edd-ab63-2c23482172fe	GET	undefined	Cannot read properties of undefined (reading 'username')
+2023-04-29	22:53:43	e20c08e4-ff54-4193-bc1b-687865bdb2c3	POST	http://localhost:3000	Not allowed by cors
+2023-04-29	22:55:07	3be40936-f0b1-4542-8e6e-14572b6af15d	POST	http://localhost:3000	Not allowed by cors
+2023-04-29	22:55:11	1ae7d277-c212-4e24-961e-f954efadc663	POST	http://localhost:3000	Not allowed by cors
+2023-04-29	22:57:12	f8c4b2ab-cf04-42a1-ad48-e17c59fdba39	POST	http://localhost:3000	Not allowed by cors
+2023-04-29	22:57:18	020e2bd7-2964-40b2-aaa1-7f90d13ef4e7	POST	http://localhost:3000	Not allowed by cors
+2023-04-29	22:57:45	fd267c82-485d-4f16-b1cd-07ed66b638bb	POST	http://localhost:3000	Not allowed by cors
+2023-04-29	23:20:47	57303de4-1be2-42fc-a283-5e295f944adf	OPTIONS	http://192.168.31.35:3000	Not allowed by cors
+2023-04-29	23:21:00	2e1d38cb-1f88-410c-8e49-7fbb71d82a20	OPTIONS	http://192.168.31.35:3000	Not allowed by cors
