@@ -13,14 +13,16 @@ const handleLogout = async (req, res) => {
 
     //if user not found with same token then delete jwt cookie.
     if (!foundUser) {
-        res.clearCookie("jwt", { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
+        res.clearCookie("jwt", { httpOnly: true });
         return res.sendStatus(204);
     }
 
     //if user found then delete both jwt cookie and DB token
-    await User.findByIdAndUpdate(foundUser._id, { refreshToken: "" }).exec();
+    // await User.findByIdAndUpdate(foundUser._id, { refreshToken: "" }).exec();
+    foundUser.refreshToken = "";
+    await foundUser.save();
 
-    res.clearCookie("jwt", { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 }); //secure :true - serve on https
+    res.clearCookie("jwt", { httpOnly: true }); //secure :true - serve on https
     return res.json({ messgae: "user logout successfully" })
 };
 

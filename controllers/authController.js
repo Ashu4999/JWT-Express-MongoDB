@@ -42,7 +42,9 @@ const handleLogin = async (req, res) => {
         );
 
         //saving refresh token in users DB .
-        await User.findByIdAndUpdate(foundUser._id, { refreshToken: refreshToken }).exec();
+        // await User.findByIdAndUpdate(foundUser._id, { refreshToken: refreshToken }).exec();
+        foundUser.refreshToken = refreshToken;
+        await foundUser.save();
 
         res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
         res.status(200).json({ message: `${username} logged in!!!`, accessToken });
