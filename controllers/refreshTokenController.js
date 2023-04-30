@@ -1,10 +1,7 @@
 const jwt = require("jsonwebtoken");
+const User = require("../model/userSchema");
 
-const userDB = {
-    users: require("../model/users.json"),
-    setUsers: function (data) { this.users = data },
-}
-const refreshTokenController = (req, res) => {
+const refreshTokenController = async (req, res) => {
     const cookies = req.cookies;
 
     if (!cookies?.jwt)
@@ -14,7 +11,7 @@ const refreshTokenController = (req, res) => {
     let refreshToken = cookies?.jwt;
 
     //getting user by comparing refresh token
-    let foundUser = userDB.users.find(item => item.refreshToken == refreshToken);
+    let foundUser = await User.findOne({ refreshToken }).exec();
 
     if (!foundUser)
         return res.sendStatus(403);
@@ -23,7 +20,7 @@ const refreshTokenController = (req, res) => {
         refreshToken,
         process.env.REFRESH_TOKEN_SECRET,
         (err, decoded) => {
-            //thrwing err if token username and DB token username not matched
+            //throwing err if token username and DB token username not matched
             if (err || decoded.username != foundUser.username)
                 return res.sendStatus(403);
 

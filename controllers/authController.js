@@ -1,14 +1,6 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-require("dotenv").config();
-const fsPromises = require("fs").promises;
-const path = require("path");
-let rootProjectPath = path.join(__dirname, "..");
-
-const userDB = {
-    users: require("../model/users.json"),
-    setUsers: function (data) { this.data = data },
-};
+const User = require("../model/userSchema");
 
 const handleLogin = async (req, res) => {
     try {
@@ -18,7 +10,7 @@ const handleLogin = async (req, res) => {
             return res.status(400).json({ message: "please provide username and password." });
         }
 
-        const foundUser = userDB.users.find(item => item.username == username);
+        const foundUser = await User.findOne({ username }).exec();
 
         if (!foundUser) {
             return res.status(409).json({ message: "No user found." })
@@ -49,10 +41,10 @@ const handleLogin = async (req, res) => {
             { expiresIn: "1d" }
         );
 
-        //saving refresh token with current token.
-        let foundUserIndex = userDB.users.findIndex(item => item.username == foundUser.username);
-        userDB.users[foundUserIndex] = { ...foundUser, refreshToken: refreshToken };
-        await fsPromises.writeFile(path.join(rootProjectPath, "model", "users.json"), JSON.stringify(userDB.users));
+        //saving refresh token in users DB .
+        // await User.findByIdAndUpdate(foundUser._id, { refreshToken: refreshToken }).exec();
+        foundUser.refreshToken = refreshToken;
+        await foundUser.save();
 
         res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
         res.status(200).json({ message: `${username} logged in!!!`, accessToken });

@@ -1,56 +1,104 @@
-const data = {
-    employees: require("../model/data.json"),
-    setEmployees: function (data) { this.employees = data },
-}
+const Employee = require("../model/employeeSchema");
 
-const getAllEmployees = (req, res) => {
-    res.json(data.employees);
+const getAllEmployees = async (req, res) => {
+    try {
+        const data = await Employee.find().exec();
+        if (data.length == 0)
+            throw { statusCode: 204, message: "No employee found." };
+        return res.status(200).json({ data: data });
+    } catch (error) {
+        if (error.statusCode)
+            return res.status(error.statusCode).json({ message: error.message.toString() });
+        else
+            return res.status(500).json({ message: error.toString() });
+    }
 };
 
-const createNewEmployee = (req, res) => {
-    const { firstname, lastname } = req.body;
-    if (!firstname || !lastname) {
-        throw Error("please provide this { firstname, lastname }");
+const createNewEmployee = async (req, res) => {
+    const { firstname, lastname, email } = req.body;
+    if (!firstname || !lastname || !email) {
+        throw { statusCode: 403, message: "please provide all filelds { firstname, lastname, email }" };
     }
-    const maxID = data.employees.length > 0 ? data.employees.reduce((accumulator, current) => {
-        return accumulator.id > current.id ? accumulator : current;
-    }).id : 0;
-    let newEmployee = { id: maxID + 1, firstname, lastname };
-    data.setEmployees([...data.employees, newEmployee]);
-    res.send({ msg: "employee added", data });
+    try {
+        const foundEmployee = await Employee.findOne({ email });
+
+        if (foundEmployee)
+            throw { statusCode: 409, message: "Email already exists for another employee" };
+
+        // const newEmployee = new Employee({ firstname, lastname, email });
+        // await newEmployee.save();
+        const result = await Employee.create({ firstname, lastname, email });
+        return res.status(201).send({ msg: `Employee added ${email}`, id: result._id });
+    } catch (error) {
+        if (error.statusCode)
+            return res.status(error.statusCode).json({ message: error.message.toString() });
+        else
+            return res.status(500).json({ message: error.toString() });
+    }
 };
 
-const updateEmployee = (req, res) => {
-    const { id, firstname, lastname } = req.body;
-    if (!id || !firstname || !lastname) {
-        throw Error("please provide this { id, firstname, lastname }");
+const updateEmployee = async (req, res) => {
+    try {
+        const { id, firstname, lastname, email } = req.body;
+        if (!firstname || !lastname || !id) {
+            throw { statusCode: 403, message: "please provide this { id, firstname, lastname }" }
+        }
+
+        const foundEmployee = await Employee.findOne({ _id: id });
+
+        if (!foundEmployee)
+            throw { statusCode: 204, message: `No employee found under this ${email} email` };
+
+        await Employee.findByIdAndUpdate(foundEmployee._id, { firstname, lastname }).exec();
+        return res.status(200).json({ msg: `Employee updated ${foundEmployee.firstname} ${foundEmployee.lastname}`, id: foundEmployee._id });
+    } catch (error) {
+        if (error.statusCode)
+            return res.status(error.statusCode).json({ message: error.message.toString() });
+        else
+            return res.status(500).json({ message: error.toString() });
     }
-    const objectIndexToUpdate = data.employees.findIndex((item) => item.id == id);
-    data.employees[objectIndexToUpdate] = { id, firstname, lastname };
-    res.status(201).json({ msg: "employee updated", data: data.employees });
 };
 
-const deleteEmployee = (req, res) => {
-    const { id } = req.body;
-    if (!id) {
-        throw Error("please provide ID to delete");
-    }
+const deleteEmployee = async (req, res) => {
+    try {
+        const { id } = req.body;
+        if (!id) {
+            throw { statusCode: 403, message: "Please provide ID to delete" };
+        }
 
-    let objToDelete = data.employees.find((item) => item.id == id);
-    if (!objToDelete) {
-        throw Error(`No employee under this id ${id}`);
+        const foundEmployee = await Employee.findByIdAndDelete({ _id: id });
+        if (!foundEmployee) {
+            throw { statusCode: 403, message: `No employee under this id ${id}` };
+        }
+
+        return res.status(200).json({
+            msg: "Employee deleted",
+            Employee: { id: foundEmployee._id, email: foundEmployee.email }
+        });
+    } catch (error) {
+        if (error.statusCode)
+            return res.status(error.statusCode).json({ message: error.message.toString() });
+        else
+            return res.status(500).json({ message: error.toString() });
     }
-    data.setEmployees(data.employees.filter((item) => item.id != id));
-    res.json({ msg: "employee deleted", data: data.employees });
 };
 
-const getEmployeeByID = (req, res) => {
-    const { id } = req.params;
-    const employeeObj = data.employees.find((item) => item.id == id);
-    if (!employeeObj) {
-        throw Error(`No employee found under this ${id}`);
+const getEmployeeByID = async (req, res) => {
+    try {
+        const { id } = req.params;
+        if (!id)
+            throw { statusCode: 403, message: `Please provide id to delete employee` };
+        const employeeObj = await Employee.findOne({ _id: id });
+        if (!employeeObj)
+            throw { statusCode: 404, message: `No employee found under this ${id}` };
+
+        res.json(employeeObj);
+    } catch (err) {
+        if (error.statusCode)
+            return res.status(error.statusCode).json({ message: error.message.toString() });
+        else
+            return res.status(500).json({ message: error.toString() });
     }
-    res.json(employeeObj);
 };
 
 module.exports = {
