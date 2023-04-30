@@ -50,3 +50,13 @@
 2023-04-30	16:40:20	7ed3ae18-f657-483c-a543-f1103d6b7631	GET	undefined	Cannot read properties of undefined (reading 'username')
 2023-04-30	16:42:15	f729abc7-6096-4f9f-8b36-dffbc03f97c5	GET	undefined	usersRoles.map is not a function
 2023-04-30	17:07:29	c47ca49d-96ce-4c3d-955b-62b4ab42b799	DELETE	undefined	No employee under this id 4
+2023-04-30	22:11:50	42faf471-64a7-418d-8fe1-fb5e1b0be9bf	GET	undefined	Converting circular structure to JSON
+    --> starting at object with constructor 'MongoClient'
+    |     property 's' -> object with constructor 'Object'
+    |     property 'sessionPool' -> object with constructor 'ServerSessionPool'
+    --- property 'client' closes the circle
+2023-04-30	22:12:03	d02fde9c-f1f3-44db-9a62-833f1fd5a292	GET	undefined	Converting circular structure to JSON
+    --> starting at object with constructor 'MongoClient'
+    |     property 's' -> object with constructor 'Object'
+    |     property 'sessionPool' -> object with constructor 'ServerSessionPool'
+    --- property 'client' closes the circle

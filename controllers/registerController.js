@@ -1,13 +1,6 @@
+const User = require("../model/userSchema");
 const bcrypt = require("bcrypt");
-const path = require("path");
-const fsPromises = require("fs").promises;
-let rootProjectPath = path.join(__dirname, "..");
 const Roles_List = require("../config/roles");
-
-const userDB = {
-    users: require("../model/users.json"),
-    setUsers: function (data) { this.users = data },
-};
 
 const handleRegister = async (req, res) => {
     const { username, password } = req.body;
@@ -16,7 +9,7 @@ const handleRegister = async (req, res) => {
         return res.status(400).json({ message: "please provide username and password." })
     }
 
-    const checkUserExists = userDB.users.find(item => item.username == username);
+    const checkUserExists = await User.findOne({ username }).exec();
 
     if (checkUserExists) {
         return res.status(409).json({ message: "Username already exists." });;
@@ -25,11 +18,10 @@ const handleRegister = async (req, res) => {
     try {
         const hashedPwd = await bcrypt.hash(password, 10);
 
-        const newUser = { username, password: hashedPwd, roles: { User: Roles_List.User } };
-        userDB.setUsers([...userDB.users, newUser]);
-        await fsPromises.writeFile(path.join(rootProjectPath, "model", "users.json"), JSON.stringify(userDB.users));
+        const newUser = new User({ username, password: hashedPwd, });
+        const result = await newUser.save();
 
-        res.status(201).json({ message: `New user created ${username}` });
+        res.status(201).json({ message: `User created ${username}`, id: result._id });
     } catch (error) {
         res.status(500).json({ message: error.message })
     }
