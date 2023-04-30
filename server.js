@@ -10,6 +10,11 @@ const { corsOptions } = require("./config/cors");
 const { verifyJWT } = require("./middleware/verifyJWT");
 const cookieParser = require("cookie-parser");
 const credentials = require("./middleware/credentials");
+const mongoose = require("mongoose");
+const connectDB = require("./config/dbConn");
+
+//connecting to mongoDB
+connectDB();
 
 app.use(logger);
 
@@ -58,6 +63,10 @@ app.all('*', (req, res) => {
 
 app.use(errHandler);
 
-app.listen(PORT, (req, res) => {
-    console.log(`server is running on port : ${PORT}`);
+mongoose.connection.once("open", () => {
+    console.log("Connected to MongoDB");
+    //listening requests only after connected to mongoDB
+    app.listen(PORT, (req, res) => {
+        console.log(`server is running on port : ${PORT}`);
+    });
 });
