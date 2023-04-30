@@ -45,3 +45,8 @@
 2023-04-29	22:57:45	fd267c82-485d-4f16-b1cd-07ed66b638bb	POST	http://localhost:3000	Not allowed by cors
 2023-04-29	23:20:47	57303de4-1be2-42fc-a283-5e295f944adf	OPTIONS	http://192.168.31.35:3000	Not allowed by cors
 2023-04-29	23:21:00	2e1d38cb-1f88-410c-8e49-7fbb71d82a20	OPTIONS	http://192.168.31.35:3000	Not allowed by cors
+2023-04-30	16:15:01	ef83899a-6de0-47e9-ba68-6fa0fbc43b45	GET	undefined	authHeader?.startWith is not a function
+2023-04-30	16:39:55	b070f1ef-908e-4b76-854d-4d6bb692713f	GET	undefined	Cannot read properties of undefined (reading 'username')
+2023-04-30	16:40:20	7ed3ae18-f657-483c-a543-f1103d6b7631	GET	undefined	Cannot read properties of undefined (reading 'username')
+2023-04-30	16:42:15	f729abc7-6096-4f9f-8b36-dffbc03f97c5	GET	undefined	usersRoles.map is not a function
+2023-04-30	17:07:29	c47ca49d-96ce-4c3d-955b-62b4ab42b799	DELETE	undefined	No employee under this id 4

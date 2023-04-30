@@ -2,6 +2,7 @@ const bcrypt = require("bcrypt");
 const path = require("path");
 const fsPromises = require("fs").promises;
 let rootProjectPath = path.join(__dirname, "..");
+const Roles_List = require("../config/roles");
 
 const userDB = {
     users: require("../model/users.json"),
@@ -24,7 +25,7 @@ const handleRegister = async (req, res) => {
     try {
         const hashedPwd = await bcrypt.hash(password, 10);
 
-        const newUser = { username, password: hashedPwd };
+        const newUser = { username, password: hashedPwd, roles: { User: Roles_List.User } };
         userDB.setUsers([...userDB.users, newUser]);
         await fsPromises.writeFile(path.join(rootProjectPath, "model", "users.json"), JSON.stringify(userDB.users));
 
