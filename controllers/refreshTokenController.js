@@ -37,7 +37,7 @@ const refreshTokenController = async (req, res) => {
                 { expiresIn: "15s" }
             );
 
-            return res.status(201).json({ message: "Access token created", accessToken })
+            return res.status(201).json({ message: "Access token created", accessToken, roles })
         });
 };
 
