@@ -2,13 +2,13 @@
   "name": "tut-5",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "engines": {
     "node": "14.x"
   },
   "scripts": {
-    "start": "node server",
-    "dev": "nodemon --inspect server.js"
+    "start": "node index.js",
+    "dev": "nodemon --inspect index.js"
   },
   "author": "",
   "license": "ISC",
