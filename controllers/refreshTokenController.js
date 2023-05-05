@@ -24,7 +24,7 @@ const refreshTokenController = async (req, res) => {
             if (err || decoded.username != foundUser.username)
                 return res.sendStatus(403);
 
-            const roles = Object.values(foundUser.roles);//User's roles
+            const roles = Object.values(foundUser.roles).filter(Boolean);//User's roles
             //creating new token
             const accessToken = jwt.sign(
                 {
