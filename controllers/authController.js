@@ -7,7 +7,7 @@ const handleLogin = async (req, res) => {
         const { username, password } = req.body;
 
         if (!username || !password) {
-            return res.status(400).json({ message: "please provide username and password." });
+            return res.status(400).json({ message: "Please provide username and password." });
         }
 
         const foundUser = await User.findOne({ username }).exec();
@@ -22,7 +22,8 @@ const handleLogin = async (req, res) => {
             return res.status(401).json({ message: "Invalid Crendentials" });
         }
 
-        const roles = Object.values(foundUser.roles);//User's roles
+        console.log(foundUser.roles)
+        const roles = Object.values(foundUser.roles).filter(Boolean);//User's roles
 
         const accessToken = jwt.sign(
             {
@@ -32,13 +33,13 @@ const handleLogin = async (req, res) => {
                 }
             },
             process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: "30s" }
+            { expiresIn: "15s" }
         );
 
         const refreshToken = jwt.sign(
             { username: foundUser.username },
             process.env.REFRESH_TOKEN_SECRET,
-            { expiresIn: "1d" }
+            { expiresIn: "1m" }
         );
 
         //saving refresh token in users DB .
@@ -47,7 +48,7 @@ const handleLogin = async (req, res) => {
         await foundUser.save();
 
         res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
-        res.status(200).json({ message: `${username} logged in!!!`, accessToken });
+        res.status(200).json({ message: `${username} logged in!!!`, accessToken, roles });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
