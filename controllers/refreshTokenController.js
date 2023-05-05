@@ -34,7 +34,7 @@ const refreshTokenController = async (req, res) => {
                     }
                 },
                 process.env.ACCESS_TOKEN_SECRET,
-                { expiresIn: "30s" }
+                { expiresIn: "15s" }
             );
 
             return res.status(201).json({ message: "Access token created", accessToken })

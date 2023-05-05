@@ -71,3 +71,6 @@
 2023-04-30	23:30:21	4850d580-e2d2-4b2a-bb48-19b8e857fd37	POST	undefined	data is not defined
 2023-04-30	23:30:21	214ab8dc-c474-43f0-9242-3bd95867e36d	POST	undefined	data is not defined
 2023-05-01	01:28:13	333e7ad4-3049-4768-9e84-52788e5d6447	POST	undefined	Unexpected end of JSON input
+2023-05-02	23:18:42	a783a705-670c-47ea-9225-795f595e6f8d	OPTIONS	http://192.168.31.35:3000	Not allowed by cors
+2023-05-02	23:19:14	7e69f838-f00f-42b3-8cf7-688e801e97e9	OPTIONS	http://192.168.31.35:3000	Not allowed by cors
+2023-05-02	23:20:22	2247c572-a56e-4026-a093-b03bdf5785e3	OPTIONS	http://192.168.31.35:3000	Not allowed by cors
