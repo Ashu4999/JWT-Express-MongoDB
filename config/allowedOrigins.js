@@ -12,6 +12,7 @@ let allowedOrigins = [
     "https://yoursite.com",
     "https://www.google.com",
     "http://localhost:3000",
+    "https://jwt-react-l2j5ln1gn-ashu4999.vercel.app",
     // `http://${ipAddress}:3000`,
 ];
 
