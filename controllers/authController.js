@@ -46,6 +46,8 @@ const handleLogin = async (req, res) => {
         foundUser.refreshToken = refreshToken;
         await foundUser.save();
 
+        console.log("headers", req.headers);
+
         res.cookie('jwt', refreshToken,
             {
                 maxAge: 24 * 60 * 60 * 1000,
