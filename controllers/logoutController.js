@@ -13,7 +13,11 @@ const handleLogout = async (req, res) => {
 
     //if user not found with same token then delete jwt cookie.
     if (!foundUser) {
-        res.clearCookie("jwt", { httpOnly: true });
+        res.clearCookie("jwt",
+            {
+                httpOnly: true,
+                sameSite: 'None', secure: true, //for https and different domains
+            });
         return res.sendStatus(204);
     }
 
@@ -22,7 +26,10 @@ const handleLogout = async (req, res) => {
     foundUser.refreshToken = "";
     await foundUser.save();
 
-    res.clearCookie("jwt", { httpOnly: true }); //secure :true - serve on https
+    res.clearCookie("jwt", {
+        httpOnly: true,
+        sameSite: 'None', secure: true, //for https and different domains
+    }); //secure :true - serve on https
     return res.json({ messgae: "user logout successfully" })
 };
 
