@@ -22,7 +22,6 @@ const handleLogin = async (req, res) => {
             return res.status(401).json({ message: "Invalid Crendentials" });
         }
 
-        console.log(foundUser.roles)
         const roles = Object.values(foundUser.roles).filter(Boolean);//User's roles
 
         const accessToken = jwt.sign(
@@ -50,6 +49,7 @@ const handleLogin = async (req, res) => {
         res.cookie('jwt', refreshToken,
             {
                 httpOnly: true,
+                domain: process.env.REACT_PROJECT_DOMAIN,
                 sameSite: 'None', secure: true, //for https and different domains
                 maxAge: 24 * 60 * 60 * 1000
             });
