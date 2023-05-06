@@ -16,7 +16,8 @@ const handleLogout = async (req, res) => {
         res.clearCookie("jwt",
             {
                 httpOnly: true,
-                domain: process.env.REACT_PROJECT_DOMAIN, sameSite: 'None', secure: true, //for https and different domains
+                // domain: process.env.REACT_PROJECT_DOMAIN,
+                sameSite: 'none', secure: true, //for https and different domains
             });
         return res.sendStatus(204);
     }
@@ -28,7 +29,8 @@ const handleLogout = async (req, res) => {
 
     res.clearCookie("jwt", {
         httpOnly: true,
-        domain: process.env.REACT_PROJECT_DOMAIN, sameSite: 'None', secure: true, //for https and different domains
+        // domain: process.env.REACT_PROJECT_DOMAIN,
+        sameSite: 'none', secure: true, //for https and different domains
     }); //secure :true - serve on https
     return res.json({ messgae: "user logout successfully" })
 };
