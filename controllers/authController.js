@@ -46,7 +46,7 @@ const handleLogin = async (req, res) => {
         foundUser.refreshToken = refreshToken;
         await foundUser.save();
 
-        console.log("headers", req.headers);
+        // console.log("headers", req.headers);
 
         res.cookie('jwt', refreshToken,
             {
