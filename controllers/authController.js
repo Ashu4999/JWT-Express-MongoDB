@@ -49,8 +49,7 @@ const handleLogin = async (req, res) => {
         res.cookie('jwt', refreshToken,
             {
                 httpOnly: true,
-                domain: process.env.REACT_PROJECT_DOMAIN,
-                sameSite: 'None', secure: true, //for https and different domains
+                // domain: process.env.REACT_PROJECT_DOMAIN, sameSite: 'None', secure: true, //for https and different domains
                 maxAge: 24 * 60 * 60 * 1000
             });
         res.status(200).json({ message: `${username} logged in!!!`, accessToken, roles });
