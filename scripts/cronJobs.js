@@ -7,7 +7,7 @@ const API_URL = process.env.API_URL;
 const startCronJobs = () => {
   try {
     // Schedule the cron job
-    cron.schedule("*/5 * * * *", async () => {
+    cron.schedule("0 0 * * *", async () => {
       // Every 5 minutes
       try {
         await axios.get(APP_URL);
